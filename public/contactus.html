@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Sets title of website -->
+    <title>SpeeDelivery</title>
+
+    <!-- Sets links for website -->
+    <script src="https://kit.fontawesome.com/13287563ee.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" src="https://cdn.jsdelivr.net/sweetalert2/6.6.0/sweetalert2.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body class="bg-light text-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">
+        <img src="img/SpeeDeliveryIcon.jpeg" class="mr-1 d-inline-block align-top" width="50" height="50">
+        <strong class="align-middle custom-nav-text nav-text">SpeeDelivery</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse text-dark" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto active">
+          <li class="nav-item">
+            <a id = "requests" style="display: none" class="nav-link nav-text" href="/requests.html">Requests</a>
+          </li>
+        </ul>
+        <button id="sign-out" style="display: none" class="nav-item mr-4 nav-text btn btn-outline-dark">
+          Logout
+        </button>
+        <button id="login" style="display: none" class="nav-item mr-4 nav-text btn btn-outline-info">
+          Login
+        </button>
+      </div>
+    </nav>
+    <div class="container-fluid mb-4">
+      <hr class="hr-styles mt-0 bg-dark">
+    </div>
+
+    <div class="container-fluid mu-4">
+      <div id="about" class="container">
+        <div class="row">
+          <h1 class="title">Contact Info</h1>
+        </div>
+        <div class="row justify-content-center" id="aboutUs">Feel free to contact us if you have any questions or you want to help at: &nbsp; <a href="#" class="text-info">speedeliverhouston@gmail.com</a></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Email</label>
+            <input type="email" class="form-control" id="inputEmail4">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Password</label>
+            <input type="password" class="form-control" id="inputPassword4">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">Address</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        </div>
+        <div class="form-group">
+          <label for="inputAddress2">Address 2</label>
+          <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputCity">City</label>
+            <input type="text" class="form-control" id="inputCity">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">State</label>
+            <select id="inputState" class="form-control">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputZip">Zip</label>
+            <input type="text" class="form-control" id="inputZip">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Check me out
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+      </form>
+    </div>
+
+    <div class="container fixed-bottom">
+      <br>
+      <hr class="hr-styles bg-info">
+      <div class="justify-content-center text-center row">
+        <div class="col-12 col-sm-3 my-1 footer-text" onclick="aboutUsPage()">About Us</div>
+        <div class="col-12 col-sm-3 my-1 footer-text" data-toggle="modal" data-target="#terms">Terms of Service </div>
+        <div class="col-12 col-sm-3 my-1 footer-text" onclick="">Contact Us</div>
+        <div class="col-12 col-sm-3 my-1 footer-text text-muted">Version 1.4</div>
+      </div>
+      <br>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div class="modal fade" id="terms" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="termsLabel">Terms of Service</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h2>Privacy</h2>
+            <p style="letter-spacing:0.5px;font-weight:100;">All data and information entered on SpeeDelivery can be used to improve the platform. SpeeDelivery owns full commercial rights to all data collected from users on the SpeeDelivery platform.
+            </p>
+            <h2>Service</h2>
+            <p style="letter-spacing:0.5px;font-weight:100;">All requests that are displayable, are from either users, developers, or beta testers of SpeeDelivery, and SpeeDelivery is not held responsible for any harm caused to a user from another user or from misleading information. In its current state, SpeeDelivery is a student-led project in a early phase to help people request grocery deliveries, at no charge. SpeeDelivery at this stage does not share any information for financial gain on behalf of SpeeDelivery. SpeeDelivery is not responsible for any consequences or outcomes of using the SpeeDelivery platform.</p>
+
+            <h2>Third Parties</h2>
+            <p style="letter-spacing:0.5px;font-weight:100;">All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of them does not imply any affiliation with, endorsement from, sponsorship by, or official agreement with them.</p>
+
+            <hr class="hr-styles bg-dark">
+            <p style="letter-spacing:0.5px;font-weight:100;">Please note: All specifications are subject to change without notice.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Including only the Firebase features we need -->
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-messaging.js"></script>
+
+
+    <script src="js/firebase-setup.js"></script>
+    <script src="js/requests.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

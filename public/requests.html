@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Sets title of website -->
+    <title>SpeeDelivery</title>
+
+    <!-- Sets links for website -->
+    <script src="https://kit.fontawesome.com/13287563ee.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body class="bg-light text-dark">
+    <div id="page-container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">
+          <img src="img/SpeeDeliveryIcon.jpeg" class="mr-1 d-inline-block align-top" width="50" height="50">
+          <strong class="align-middle custom-nav-text nav-text" id="name">SpeeDelivery</strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-dark" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link nav-text" onclick="openModal()" style="cursor: pointer;">New Request</a>
+            </li>
+            <li class="nav-item text-dark">
+              <a class="nav-link nav-text" href="/payments.html">Payments</a>
+            </li>
+          </ul>
+          <button id="sign-out" class="nav-item mr-4 nav-text btn btn-outline-dark">
+            Logout
+          </button>
+        </div>
+      </nav>
+      <div class="container-fluid mb-4">
+        <hr class="hr-styles mt-0 bg-dark">
+      </div>
+
+      <div id="content-wrap">
+        <!-- New Request, Display Request, Request Terms of Service Modals -->
+        <div class="modal fade" style="display: none;" id="newRequestModal" tabindex="-1" role="dialog" aria-labelledby="newRequestModal" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="newRequestModal">New Request</h5>
+                <button type="button" class="close" onclick="closeModal()" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container-fluid">
+                  <div class="row my-1">
+                    <div class="col-5">
+                      Select A Store:
+                    </div>
+                    <div class="col">
+                      <select id="stores">
+                        <option value="heb">HEB</option>
+                        <option value="seiwa">Seiwa</option>
+                        <option value="kroger">Kroger</option>
+                        <option value="costco">Costco</option>
+                        <option value="vishala">Vishala</option>
+                        <option value="wholeFoods">Whole Foods</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row my-1">
+                    <div class="col-2">
+                      Items:
+                    </div>
+                    <div class="col-10">
+                      <textarea rows="5" cols="50" onfocus="clearItems()" id="itemsList" name="itemsList">Enter Items Here... </textarea>
+                    </div>
+                  </div>
+                  <div class="row my-1">
+                    <div class="col-3">
+                      Address:
+                    </div>
+                    <div class="col">
+                      <input type="text" id="newAddress" name="newAddress">
+                    </div>
+                  </div>
+                  <div class="row my-1">
+                    <div class="col-6">
+                      Phone Number:
+                    </div>
+                    <div class="col">
+                      <input type="text" id="newPhoneNumber" name="newPhoneNumber">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-outline-info btn-lg" id = "addRequestButton" class="modal-button" type="button" class="btn btn-secondary" data-dismiss="modal" onclick="requestToS()">
+                  Submit Request
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" style="display: none;" id="displayRequestModal" tabindex="-1" role="dialog" aria-labelledby="displayRequestModal" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="displayRequestModal">Your Request - <span id="requestNum"></span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container-fluid">
+                  <div class="row my-1" id="usernameRow">
+                    <div class="col-4">
+                      Customer Name:
+                    </div>
+                    <div class="col text-right">
+                      <p id="username"></p>
+                    </div>
+                  </div>
+                  <div class="row my-1">
+                    <div class="col-4">
+                      Your Store:
+                    </div>
+                    <div class="col">
+                      <p id="store"></p>
+                    </div>
+                  </div>
+                  <div class="row my-1">
+                    <div class="col-2">
+                      Items:
+                    </div>
+                    <div class="col-10 text-right">
+                      <p id="items"></p>
+                    </div>
+                  </div>
+                  <div class="row my-1">
+                    <div class="col-3">
+                      Address:
+                    </div>
+                    <div class="col text-right">
+                      <p id="address"></p>
+                    </div>
+                  </div>
+                  <div class="row my-1">
+                    <div class="col-6">
+                      Phone Number:
+                    </div>
+                    <div class="col text-right">
+                      <p id="phoneNumber"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer justify-content-between">
+                <span id="date"></span>
+                <button type="button" id="cancelledRequest" onclick="cancelRequest()" class="btn btn-outline-info">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" style="display: none;" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="termsModal" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="termsModal">Request ToS</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" data-dismiss="modal">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container">
+                  <div class="row justify-content-between">
+                    <div class="col">
+                      <span class="font-weight-bold" style="font-size: 1.75em">SpeeDelivery</span> <span id="clientAgreement">Client Services Agreement</span>
+                    </div>
+                  </div>
+                  <hr class="hr-styles mt-1 bg-dark">
+                  <div class="row mt-1 text-muted font-italic">
+                    <div class="col-12">
+                      Please review the following terms and conditions:
+                    </div>
+                    <div class="col-12">
+                      1. SpeeDelivery will provide all delivery services through volunteers, the Company will not charge the Client any additional fees for these services except for the total amount of the groceries plus tax.
+                    </div>
+                    <div class="col-12">
+                      2. Notwithstanding any term of this Agreement, either party may terminate this Agreement at any time for any reason. In the case of such termination, no party shall have any further obligation to the other party except as provided in this Agreement or any applicable law.
+                    </div>
+                    <div class="col-12">
+                      3. As the person identified above, the Client hereby agrees to RELEASE, INDEMNIFY, AND HOLD HARMLESS the Company and its current and former officers, volunteers and employees (the “Indemnified Parties") from all claims for damages or injunctive relief resulting from the Client's receipt of personal services under this Agreement, including any claim asserting damages or injuries caused by the NEGLIGENCE of any of the Indemnified Parties.
+                    </div>
+                    <div class="col-12">
+                      4. Any controversy between the Client and the Company or any of its owners, employees, officers, agents, affiliates, or benefit plans, arising from or in any way related to this Agreement, the Client's receipt of personal services from the Company or any of its volunteers, or the end of the Client's receipt of personal services from the Company or any of its volunteers, shall be resolved exclusively by final and binding arbitration administered by the American Arbitration Association under its rules then applicable to the dispute. The disputes which must be arbitrated expressly include any dispute about the validity of this Agreement. Any arbitration shall take place in Houston, Texas, or as otherwise agreed by the parties or determined by the Arbitrator. This clause shall not preclude either party from seeking temporary injunctive relief from a court of competent jurisdiction. In any such controversy, the arbitrator may grant any relief, legal or equitable, interim or final, which could be granted by a court of competent jurisdiction. Further, the parties shall have the right to enforce this Agreement and to recover their respective costs and attorney fees incurred in enforcement, including any confirmation, modification, or vacatur proceeding or appeal from such proceeding. The Client and the Company expressly agree and understand that such arbitration proceedings are mandatory, final, and binding and that the mutual obligation to arbitrate includes (without limitation) arbitration of all claims under any federal, state, or local law. This clause shall survive the termination of this contract and is governed by the Federal Arbitration Act.
+                    </div>
+                  </div>
+                  <hr class="hr-styles mb-1 bg-dark">
+                  <div class="row mt-1 text-right">
+                    <div class="col">
+                      Version 1.0 (04/04/2020)
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-secondary" onClick="openModal()" >Cancel</button>
+                <button type="button" class="btn btn-info" data-dismiss="modal" onclick="submitRequest()">Agree & Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success and Error Toasts -->
+        <div aria-live="polite" aria-atomic="true">
+          <div class="toast-styles">
+            <div class="toast toast-err-styles" id="error-toast" data-delay="10000">
+              <div class="toast-header toast-header-err-styles">
+                <strong class="mr-auto">Error</strong>
+                <button type="button" class="ml-2 mb-1 close toast-err-close" data-dismiss="toast" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="toast-body" id="error-message"></div>
+            </div>
+            <div class="toast toast-success-styles" id="success-toast" data-delay="10000">
+              <div class="toast-header toast-header-success-styles">
+                <strong class="mr-auto">Success</strong>
+                <button type="button" class="ml-2 mb-1 close toast-success-close" data-dismiss="toast" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="toast-body" id="success-message"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Body Containers -->
+        <div class="container">
+          <div class="row justify-content-center">
+            <h1 class="title" id="testIndentifer">Requests</h1>
+          </div>
+        </div>
+        <div class="container" id="uncompletedRequests">
+
+        </div>
+        <div class="container">
+          <hr class="hr-styles bg-dark">
+          <div class="row collapse-title">
+            <div class="col-1 ml-sm-5 mr-n1 mr-sm-n3 mr-md-n4">
+              <svg class="bi bi-chevron-right mb-1 chevron" id="completedChevron" onclick="toggleCompletedRequest()" data-toggle="collapse" data-target="#completedRequests" aria-expanded="false" aria-controls="completedRequests" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div class="col text-dark">
+              <span class="glyphicon glyphicon-menu-right"></span>
+              Completed
+            </div>
+          </div>
+        </div>
+        <div class="container collapse" id="completedRequests">
+
+        </div>
+        <div class="container">
+          <hr class="hr-styles bg-dark">
+          <div class="row collapse-title">
+            <div class="col-1 ml-sm-5 mr-n1 mr-sm-n3 mr-md-n4">
+              <svg class="bi bi-chevron-right mb-1 chevron" id="cancelledChevron" onclick="toggleCancelledRequest()" data-toggle="collapse" data-target="#cancelledRequests" aria-expanded="false" aria-controls="cancelledRequests" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div class="col text-dark">
+              <span class="glyphicon glyphicon-menu-right"></span>
+              Cancelled
+            </div>
+          </div>
+        </div>
+        <div class="container collapse" id="cancelledRequests">
+
+        </div>
+      </div>
+
+      <footer id="footer">
+        <div class="container my-auto">
+          <br>
+          <hr class="hr-styles bg-info">
+          <div class="justify-content-center text-center row">
+            <div class="col-12 col-sm-3 my-1 footer-text" onclick="aboutUsPage()">About Us</div>
+            <div class="col-12 col-sm-3 my-1 footer-text" data-toggle="modal" data-target="#terms">Terms of Service </div>
+            <div class="col-12 col-sm-3 my-1 footer-text" onclick="contactUsPage()">Contact Us</div>
+            <div class="col-12 col-sm-3 my-1 footer-text text-muted">Version 1.4</div>
+          </div>
+          <br>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div class="modal fade show" id="terms" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="termsLabel">Terms of Service</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h2>Privacy</h2>
+            <p style="letter-spacing:0.5px;font-weight:100;">All data and information entered on SpeeDelivery can be used to improve the platform. SpeeDelivery owns full commercial rights to all data collected from users on the SpeeDelivery platform.
+            </p>
+            <h2>Service</h2>
+            <p style="letter-spacing:0.5px;font-weight:100;">All requests that are displayable, are from either users, developers, or beta testers of SpeeDelivery, and SpeeDelivery is not held responsible for any harm caused to a user from another user or from misleading information. In its current state, SpeeDelivery is a student-led project in a early phase to help people request grocery deliveries, at no charge. SpeeDelivery at this stage does not share any information for financial gain on behalf of SpeeDelivery. SpeeDelivery is not responsible for any consequences or outcomes of using the SpeeDelivery platform.</p>
+
+            <h2>Third Parties</h2>
+            <p style="letter-spacing:0.5px;font-weight:100;">All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of them does not imply any affiliation with, endorsement from, sponsorship by, or official agreement with them.</p>
+
+            <hr class="hr-styles bg-dark">
+            <p style="letter-spacing:0.5px;font-weight:100;">Please note: All specifications are subject to change without notice.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- Including only the Firebase features we need -->
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-messaging.js"></script>
+
+    <script src="js/firebase-setup.js"></script>
+    <script src="js/requests.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

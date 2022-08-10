@@ -1,0 +1,34 @@
+{
+  "rules": {
+    "Order-Count": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "Test-Order-Count": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "Requests": {
+      ".read": "auth != null && (root.child('Users').hasChild(auth.uid) || query.orderByChild == 'uid' && query.equalTo == auth.uid)",
+      ".write": "auth != null && root.child('Users').hasChild(auth.uid)",
+      ".indexOn": "uid",
+      "$uid": {
+        ".write": "auth != null && newData.child('uid').val() === auth.uid"
+      }
+    },
+    "Test-Requests": {
+      ".read": "auth != null && (root.child('Users').hasChild(auth.uid) || query.orderByChild == 'uid' && query.equalTo == auth.uid)",
+      ".write": "auth != null && root.child('Users').hasChild(auth.uid)",
+      ".indexOn": "uid",
+      "$uid": {
+        ".write": "auth != null && newData.child('uid').val() === auth.uid"
+      }
+    },
+    "Users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    }
+  }
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Sets title of website -->
+    <title>SpeeDelivery</title>
+
+    <!-- Sets links for website -->
+    <script src="https://kit.fontawesome.com/13287563ee.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" src="https://cdn.jsdelivr.net/sweetalert2/6.6.0/sweetalert2.min.css">  DONE -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body class="bg-light text-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">
+        <img src="img/SpeeDeliveryIcon.jpeg" class="mr-1 d-inline-block align-top" width="50" height="50">
+        <strong class="align-middle custom-nav-text nav-text">SpeeDelivery</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse text-dark" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto active">
+          <li class="nav-item">
+            <a id="requests" style="display: none" class="nav-link nav-text" href="/requests.html">Requests</a>
+          </li>
+        </ul>
+        <button id="sign-out" style="display: none" class="nav-item mr-4 nav-text btn btn-outline-dark">Logout</button>
+        <button id="login" style="display: none" class="nav-item mr-4 nav-text btn btn-outline-info">Login</button>
+      </div>
+    </nav>
+    <div class="container-fluid mb-4">
+      <hr class="hr-styles mt-0 bg-dark">
+    </div>
+
+    <div class="container-fluid mu-4">
+      <div id="about" class="container">
+        <div class="row">
+          <h1 class="title">About Us</h1>
+        </div>
+        <div class="row justify-content-center" id="aboutUs">
+          We are a group of students serving our community by offering grocery delivery services for those stuck at home.
+          We promise that all groceries are dropped off, and payment is done without human contact. As well as this, all deliveries and shoppers wear facial protection and disposable gloves which are changed after every individual delivery.
+
+        </div>
+        <hr class="hr-styles w-50 bg-info">
+
+        <div class="row">
+          <h1 class="title">Team</h1>
+        </div>
+        <div class="row justify-content-center">
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="img/ani-profile.jpg" class="card-img" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Anirudh Srinivasan </h5>
+                  <p class="card-text"><small class="text-muted">Communications Manager</small></p>
+                  <p class="card-text">Engages in the communications between third-parties and the team, and handles customer support.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="img/adi-profile.jpeg" class="card-img" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Aditya Agrawal</h5>
+                  <p class="card-text"><small class="text-muted">Web Developer</small></p>
+                  <p class="card-text">Working with Omar Abouelazm to develop the web platform for users.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="img/omi_profile.jpg" class="card-img" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Omar Abouelazm</h5>
+                  <p class="card-text"><small class="text-muted">Web Developer</small></p>
+                  <p class="card-text">Working with Aditya Agrawal to develop the web platform for users.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="img/muk-profile.jpeg" class="card-img" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Mukhil Ramesh</h5>
+                  <p class="card-text"><small class="text-muted">Finance Manager</small></p>
+                  <p class="card-text">Manages the financial affairs of the project, and handles payment issues with customers. </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="img/yaz-profile.jpeg" class="card-img" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Yazan Binnasser</h5>
+                  <p class="card-text"><small class="text-muted">Marketing Manager</small></p>
+                  <p class="card-text">Manages the brand of the project, and creates marketing material for use on the website or to raise awareness.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container my-auto">
+        <br>
+        <hr class="hr-styles bg-info">
+        <div class="justify-content-center text-center row">
+          <div class="col-12 col-sm-3 my-1 footer-text" onclick="aboutUsPage()">About Us</div>
+          <div class="col-12 col-sm-3 my-1 footer-text" data-toggle="modal" data-target="#terms">Terms of Service </div>
+          <div class="col-12 col-sm-3 my-1 footer-text" onclick="contactUsPage()">Contact Us</div>
+          <div class="col-12 col-sm-3 my-1 footer-text text-muted">Version 1.4</div>
+        </div>
+        <br>
+      </div>
+    </footer>
+
+    <!-- Terms of Service Modal -->
+    <div class="modal fade" id="terms" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="termsLabel">Terms of Service</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h2>Privacy</h2>
+            <p style="letter-spacing:0.5px;font-weight:100;">All data and information entered on SpeeDelivery can be used to improve the platform. SpeeDelivery owns full commercial rights to all data collected from users on the SpeeDelivery platform.
+            </p>
+            <h2>Service</h2>
+            <p style="letter-spacing:0.5px;font-weight:100;">All requests that are displayable, are from either users, developers, or beta testers of SpeeDelivery, and SpeeDelivery is not held responsible for any harm caused to a user from another user or from misleading information. In its current state, SpeeDelivery is a student-led project in a early phase to help people request grocery deliveries, at no charge. SpeeDelivery at this stage does not share any information for financial gain on behalf of SpeeDelivery. SpeeDelivery is not responsible for any consequences or outcomes of using the SpeeDelivery platform.</p>
+
+            <h2>Third Parties</h2>
+            <p style="letter-spacing:0.5px;font-weight:100;">All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of them does not imply any affiliation with, endorsement from, sponsorship by, or official agreement with them.</p>
+
+            <hr class="hr-styles bg-dark">
+            <p style="letter-spacing:0.5px;font-weight:100;">Please note: All specifications are subject to change without notice.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Including only the Firebase features we need -->
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-messaging.js"></script>
+
+
+    <script src="js/firebase-setup.js"></script>
+    <script src="js/requests.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
